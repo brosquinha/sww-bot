@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""
+This scripts removes Emuso template from pages that have not been edited by
+Emuso's user for more than 3 months
+"""
 import datetime
 import getopt
 import os
