@@ -15,7 +15,7 @@ Scripts a serem importados do RPi:
 * [ ] icp.py
 * [ ] legends.py
 * [ ] legends_only_pages.py
-* [ ] linha_do_tempo.py
+* [X] ~~linha_do_tempo.py~~
 * [ ] medalhas.py
 * [X] ~~remover_predefs.py~~ (renomeado para emuso.py)
 * [ ] sam.py
