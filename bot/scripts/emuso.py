@@ -12,10 +12,10 @@ import time
 import pywikibot
 from pywikibot import pagegenerators
 
-site = pywikibot.Site(fam="starwarsfandom", code='pt', user='BB-08')
+from bot.utils import swwsite
 
 def main():
-	cat = pywikibot.Category(site, "Categoria:Páginas sendo editadas")
+	cat = pywikibot.Category(swwsite, "Categoria:Páginas sendo editadas")
 	gen = pagegenerators.CategorizedPageGenerator(cat, recurse=False)
 	dataLimite = 60*60*24*30*3
 	for page in gen:

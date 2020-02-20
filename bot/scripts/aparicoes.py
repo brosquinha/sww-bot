@@ -21,16 +21,8 @@ from typing import Tuple, Union
 import pywikibot
 from pywikibot import pagegenerators
 
-def get_user_yes_or_no(message: str) -> bool:
-	"""
-	Gets user input to a yes or no question
-
-	:param message: Message with question to the user
-	:type message: String
-	:return: Whether user answered with yes or not
-	:rtype: Boolean
-	"""
-	return input(message).lower() == 'y'
+from bot.core.replace import main as replace_bot
+from bot.utils import get_user_yes_or_no, swwsite
 
 
 class AppearanceItem():
@@ -220,7 +212,7 @@ def main():
 				myPage = arg
 	except getopt.GetoptError:
 		myPage = input("Qual página? ")
-	site = pywikibot.Site(fam="starwarsfandom", code='pt', user='BB-08')
+	site = swwsite
 	try:
 		myPage
 	except NameError:

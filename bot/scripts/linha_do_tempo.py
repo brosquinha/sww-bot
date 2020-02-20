@@ -10,9 +10,10 @@ import urllib3
 import pywikibot
 from pywikibot import fixes, pagegenerators
 
+from bot.utils import swwsite as site
+
 def main():
 	fixes._load_file("bot/user-fixes.py")
-	site = pywikibot.Site(fam="starwarsfandom", code='pt', user='BB-08')
 	url = "http://starwars.wikia.com/wiki/Timeline_of_canon_media?action=raw"
 	print("Obtendo página em inglês...")
 	request = urllib3.PoolManager()
