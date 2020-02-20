@@ -45,7 +45,7 @@ python3 run.py general
 Scripts a serem importados do RPi:
 
 * [X] ~~aparicoes.py~~
-* [ ] canon.py
+* [X] ~~canon.py~~ (renomeado para links_canon.py)
 * [ ] eras.py
 * [ ] eras_canon.py
 * [ ] estatisticas.py
