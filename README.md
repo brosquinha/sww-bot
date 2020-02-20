@@ -49,7 +49,7 @@ Scripts a serem importados do RPi:
 * [ ] eras.py
 * [ ] eras_canon.py
 * [ ] estatisticas.py
-* [ ] general.py
+* [X] ~~general.py~~
 * [ ] icp.py
 * [ ] legends.py
 * [ ] legends_only_pages.py
