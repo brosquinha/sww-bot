@@ -58,7 +58,7 @@ Scripts a serem importados do RPi:
 * [X] ~~remover_predefs.py~~ (renomeado para emuso.py)
 * [ ] sam.py
 * [ ] temp.py
-* [ ] traducaoSWW.py
+* [X] ~~traducaoSWW.py~~
 * [ ] traducoes.py
 * [ ] troca_padrao_links.py
 * [ ] troca_padrao_mover.py
