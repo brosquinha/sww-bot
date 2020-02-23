@@ -54,7 +54,7 @@ Scripts a serem importados do RPi:
 * [ ] legends.py
 * [ ] legends_only_pages.py
 * [X] ~~linha_do_tempo.py~~
-* [ ] medalhas.py
+* [X] ~~medalhas.py~~
 * [X] ~~remover_predefs.py~~ (renomeado para emuso.py)
 * [ ] sam.py
 * [ ] temp.py
