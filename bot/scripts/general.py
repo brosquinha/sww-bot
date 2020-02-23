@@ -97,7 +97,7 @@ def main():
 	url = "http://starwars.wikia.com/wiki/Timeline_of_canon_media?action=raw"
 	request = urllib3.PoolManager()
 	try:
-		response = request.request("GET", url, timeout=30)
+		response = request.request("GET", url, timeout=10)
 		wookiee_timeline = response.data.decode('utf-8')
 		try:
 			temp_file = open("last_content_of_canon_media_timeline.txt")

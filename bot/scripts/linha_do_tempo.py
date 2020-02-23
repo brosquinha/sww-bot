@@ -18,7 +18,7 @@ def main():
 	print("Obtendo página em inglês...")
 	request = urllib3.PoolManager()
 	try:
-		response = request.request("GET", url, timeout=30)
+		response = request.request("GET", url, timeout=10)
 		paginaWookiee = response.data.decode('utf-8')
 	except:
 		print("Não foi possível obter página da Wookieepedia")

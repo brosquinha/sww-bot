@@ -201,10 +201,6 @@ class AppearanceItem():
 			print("Nenhuma ação tomada em {}...".format(self.subject_article_name))
 
 def main():
-	if ("--teste" in sys.argv[1:]):
-		estouTestando = True
-	else:
-		estouTestando = False
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], 'p:', ["page="])
 		for opt, arg in opts:
@@ -221,13 +217,10 @@ def main():
 	apTrad = pywikibot.Page(site, myPage)
 		
 	if apTrad.exists():
-		if (estouTestando):
-			print("### Modo de teste ###")
-
 		format_confirmed = False
 		myPageFormat = ("''[[", "]]''")
 		while not format_confirmed:
-			message = ("Modelo de inserção de aparição: {}{}{} ([y]es/[n]o)".format(
+			message = ("Modelo de inserção de aparição: {}{}{} ([y]es/[n]o) ".format(
 				myPageFormat[0], myPage, myPageFormat[1]))
 			if get_user_yes_or_no(message):
 				format_confirmed = True
@@ -237,14 +230,14 @@ def main():
 					input("Digite a segunda parte do formato: ")
 				)
 		myPageEnglish = None
-		if get_user_yes_or_no("É uma obra traduzida? Existe a possbilidade de haver o nome em inglês dela por aí? ([y]es/[n]o)"):
+		if get_user_yes_or_no("É uma obra traduzida? Existe a possbilidade de haver o nome em inglês dela por aí? ([y]es/[n]o) "):
 			universo = input("Informe se é uma obra Cânon ou Legends ([L]egends/[C]ânon): ").lower()
 			if (universo == "c"):
 				universo = "0"
 			else:
 				universo = "114"
 			myPageEnglish = input("Agora, informe o nome da obra em inglês: ")
-			# os.system('python pwb.py replace -start:! -ns:'+universo+' "'+resp+'" "'+myPage+'"')
+			replace_bot(myPageEnglish, myPage, "-ns:{}".format(universo), "-start:!")
 		conteudo = apTrad.text
 		try:
 			lista = conteudo.split("{{App")[1]
