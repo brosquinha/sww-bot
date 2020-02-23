@@ -22,7 +22,8 @@ from bot.core import clean_sandbox, redirect, unusedfiles
 from bot.scripts import linha_do_tempo
 from bot.scripts import links_canon as canon
 from bot.scripts import traducaoSWW
-from bot.utils import get_user_yes_or_no, swwsite as site
+from bot.utils import get_user_yes_or_no, print_over_line
+from bot.utils import swwsite as site
 
 
 def main():
@@ -123,7 +124,7 @@ def main():
 	my_username = my_user['name']
 	my_user_groups = my_user['groups']
 	temPags = False
-	outputStrLen = 0
+	output_str_len = 0
 	check_images = True
 	pagesList = list(pages)
 	if (len(pagesList) > 50):
@@ -132,16 +133,10 @@ def main():
 	if (check_images):
 		for page in pages:
 			categorias = list(page.categories())
-			outputStr = "Vendo "+page.title()
-			sys.stdout.write("\r")
-			sys.stdout.flush()
-			sys.stdout.write(" "*outputStrLen)
-			sys.stdout.flush()
-			sys.stdout.write("\r")
-			sys.stdout.flush()
-			sys.stdout.write(outputStr)
-			sys.stdout.flush()
-			outputStrLen = len(outputStr)
+			output_str_len = print_over_line(
+				message="Vendo {}".format(page.title()),
+				last_output_len=output_str_len
+			)
 			if (page.exists() and not categorias):
 				print("\nDeletar!")
 				temPags = True
