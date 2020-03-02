@@ -50,7 +50,7 @@ Scripts a serem importados do RPi:
 * [ ] eras_canon.py
 * [ ] estatisticas.py
 * [X] ~~general.py~~
-* [ ] icp.py
+* [X] ~~icp.py~~
 * [ ] legends.py
 * [ ] legends_only_pages.py
 * [X] ~~linha_do_tempo.py~~
