@@ -48,7 +48,7 @@ Scripts a serem importados do RPi:
 * [X] ~~canon.py~~ (renomeado para links_canon.py)
 * [ ] eras.py
 * [ ] eras_canon.py
-* [ ] estatisticas.py
+* [X] ~~estatisticas.py~~ (renomeado para metricas.py)
 * [X] ~~general.py~~
 * [X] ~~icp.py~~
 * [ ] legends.py
