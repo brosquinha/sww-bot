@@ -59,6 +59,6 @@ Scripts a serem importados do RPi:
 * [ ] sam.py
 * [ ] temp.py
 * [X] ~~traducaoSWW.py~~
-* [ ] traducoes.py
+* [X] ~~traducoes.py~~
 * [ ] troca_padrao_links.py
 * [ ] troca_padrao_mover.py
