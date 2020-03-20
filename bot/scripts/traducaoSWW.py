@@ -49,10 +49,9 @@ def main():
 			textoFinal += termo + "\n"
 		predef = pywikibot.Page(site, u"Predefinição:TraduçãoSWW")
 		conteudoPredef = predef.text
-		conteudoPredef = u''.join(conteudoPredef).encode('utf-8')
 		conteudoPredef = "|{{{1|}}} " + conteudoPredef.split("|{{{1|}}} ")[1]
 		textoFinal += conteudoPredef
-		pywikibot.showDiff(predef.text, textoFinal.decode('utf-8'))
+		pywikibot.showDiff(predef.text, textoFinal)
 		predef.text = textoFinal
 		predef.save(u'([[User:Thales César|Thales]]) 2.3 Expansão - Atualizando com conteúdo do Apêndice de Tradução')
 		
