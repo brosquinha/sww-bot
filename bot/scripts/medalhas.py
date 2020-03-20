@@ -72,7 +72,7 @@ def main():
 		if (page.oldest_revision.revid == revisionID):
 			canon_pages_created += 1
 		
-	article_list = ["Luke Skywalker", "Leia Organa", "Rey", "Finn", "Kylo Ren", "Anakin Skywalker",
+	article_list = ["Luke Skywalker", "Leia Organa", "Rey Skywalker", "Finn", "Ben Solo", "Anakin Skywalker",
 		"Ahsoka Tano", "Obi-Wan Kenobi", "Yoda", "Estrela da Morte"]
 	for article in article_list:
 		page = pywikibot.Page(site, article)
