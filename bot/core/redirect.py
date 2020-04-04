@@ -84,6 +84,9 @@ from pywikibot import i18n, xmlreader, Bot
 from bot.utils import swwsite
 
 
+i18n.set_messages_package('bot.core.i18n')
+
+
 class RedirectGenerator:
 
     """Redirect generator."""
@@ -648,9 +651,9 @@ class RedirectRobot(Bot):
                 targetlink = pywikibot.Page(
                     self.site,
                     targetPage.title() + sectionlink
-                ).title(asLink=True, textlink=True)
+                ).title(asLink=True, allow_interwiki=False, textlink=True)
             else:
-                targetlink = targetPage.title(asLink=True, textlink=True)
+                targetlink = targetPage.title(asLink=True, allow_interwiki=False, textlink=True)
 
             text = self.site.redirectRegex().sub(
                 '#%s %s' % (self.site.redirect(),
@@ -661,7 +664,7 @@ class RedirectRobot(Bot):
                                  % redir.title(asLink=True))
                 break
             summary = i18n.twtranslate(self.site, 'redirect-fix-double',
-                                       {'to': targetPage.title(asLink=True)}
+                                       {'to': targetPage.title(asLink=True, allow_interwiki=False)}
                                        )
             pywikibot.showDiff(oldText, text)
             if self.user_confirm(u'Do you want to accept the changes?'):
