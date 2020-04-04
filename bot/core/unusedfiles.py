@@ -77,14 +77,14 @@ class UnusedFilesBot(Bot):
 		generator = pagegenerators.UnusedFilesGenerator(total=1000,site=self.site) #500
 		generator = pagegenerators.PreloadingGenerator(generator)
 		for image in generator:
-			tituloImagem = u''.join(image.title()).encode('utf-8')
+			tituloImagem = image.title()
 			if not image.exists():
 				pywikibot.output(u"File '%s' does not exist (see bug 69133)."
 								 % image.title())
 				continue
 			print(tituloImagem)
 			imagemTexto = image.text
-			if (except_text_translated.encode('utf-8')
+			if (except_text_translated
 					not in image.getImagePageHtml() and
 					u'http://' not in imagemTexto):
 				if template_image in image.text:
