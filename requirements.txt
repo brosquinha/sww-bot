@@ -1,6 +1,6 @@
 certifi==2019.6.16
 chardet==3.0.4
-httplib2==0.13.1
+httplib2==0.18.0
 idna==2.8
 pycparser==2.19
 pywikibot==3.0.20200111
