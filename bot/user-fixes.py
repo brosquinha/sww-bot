@@ -18,7 +18,7 @@ fixes['obras'] = {
         (r'\bLost Stars\b', u'Estrelas Perdidas'),
         (r'\bAftermath\b', u'Marcas da Guerra'),
         (r'\bMarcas da Guerra: Life Debt\b', u'Marcas da Guerra: Dívida de Honra'),
-        (r'\bMarcas da Guerra: Empire\'s End\b', u'Aftermath: Empire\'s End'),
+        (r'\bMarcas da Guerra: Empire\'s End\b', u'Marcas da Guerra: Fim do Império'),
         (r'\bSkywalker Strikes\b', u'Skywalker Ataca'),
         (r'\bMoving Target: A Princess Leia Adventure\b', u'Alvo em Movimento: Uma Aventura da Princesa Leia'),
         (r'\bPrincess Leia\b', u'Princesa Leia'),
@@ -38,6 +38,7 @@ fixes['obras'] = {
         (r'\bDoctor Aphra\b', u'Doutora Aphra'),
         (r'\bStar Wars: Uprising\b', u'Star Wars: A Rebelião'),
         (r'\bBattlefront: Twilight Company\b', u'Battlefront: Companhia do Crepúsculo'),
+        (r'\bResistance Reborn\b', u'A Resistência Renasce'),
         #(r'\b\b', u''),
 		
 		### FILMES ###
@@ -50,7 +51,7 @@ fixes['obras'] = {
         (r'\[\[Star Wars: Episode VII The Force Awakens\|\'\'Star Wars\'\': Episode VII \'\'The Force Awakens\'\'\]\]', u'{{Filme|VII}}'),
         (r'\[\[Rogue One: A Star Wars Story\]\]', u'[[Rogue One: Uma História Star Wars]]'),
         (r'\[\[Star Wars: Episode VIII The Last Jedi\|\'\'Star Wars\'\': Episode VIII \'\'The Last Jedi\'\'\]\]', u'{{Filme|VIII}}'),
-        (r'\[\[Star Wars: Episode IX\|\'\'Star Wars:\'\' Episode IX\]\]', u'{{Filme|IX}}'),
+        (r'\[\[Star Wars: Episode IX The Rise of Skywalker\|\'\'Star Wars\'\': Episode IX \'\'The Rise of Skywalker\'\'\]\]', u'{{Filme|IX}}'),
         (r'\[\[Solo: A Star Wars Story\]\]', u'[[Han Solo: Uma História Star Wars]]'),
         #(r'\b\b', u''),
 		
