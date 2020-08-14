@@ -3,6 +3,7 @@ import sys
 from pywikibot import Site
 
 swwsite: Site = Site(fam="starwarsfandom", code='pt', user='BB-08')
+comunidadesite: Site = Site(fam="centralcomunidade", code='pt', user='BB-08')
 
 def get_user_yes_or_no(message: str) -> bool:
 	"""
