@@ -9,30 +9,36 @@ to other Legends pages. Because Legends linking requires the prefix "Legends:" o
 link, it is quite common for new users to forgo the namespace and make a lot of canon links on
 Legends articles. This scripts aims to help fix those links.
 """
+import json
 import sys, getopt
+from json.decoder import JSONDecodeError
+
 import pywikibot
 from pywikibot import pagegenerators
 
 from bot.utils import swwsite as site
 
-def tentarDecodeUTF8(qm):
-	try:
-		qm.decode('utf-8')
-		return True
-	except:
-		return False
-
 
 def main():
-	artigosDentro = open("paginas.txt").read()
+	try:
+		with open("links_canon.json") as f:
+			known_links = json.loads(f.read())
+	except (FileNotFoundError, OSError, JSONDecodeError):
+		known_links = {'legends': [], 'canon': []}
 
 	category = pywikibot.Category(site,'Category:Artigos com links errados')
 	generator = pagegenerators.CategorizedPageGenerator(category, True)
-	already_confirmed = []
-	already_denied = []
+
+	for links_legends, links_not_legends in replace_links(page_generator=generator, known_links=known_links):
+		with open("links_canon.json", "w+") as f:
+			f.write(json.dumps({'legends': links_legends, 'canon': links_not_legends}))
+
+def replace_links(page_generator, known_links):
+	already_confirmed = known_links.get('legends', [])
+	already_denied = known_links.get('canon', [])
 	all_next = False
 
-	for page in generator:
+	for page in page_generator:
 		nome = page.title()
 		print(nome)
 		if (nome == "Predefinição:Links errados/preload"):
@@ -61,7 +67,7 @@ def main():
 			if any(ext in actual_article_name for ext in skip_these):
 				print("Pulando '" + actual_article_name + "'...")
 				novoTexto += "[[" + link + "]]" + recorteFinal
-			elif (artigosDentro.find("\n"+actual_article_name+"\n") > -1 or actual_article_name in already_denied):
+			elif (actual_article_name in already_denied):
 				print("Pulando '" + actual_article_name + "'...")
 				novoTexto += "[[" + link + "]]" + recorteFinal
 			elif (actual_article_name in already_confirmed):
@@ -71,11 +77,11 @@ def main():
 				else:
 					novoTexto += "[[Legends:" + actual_article_name + "|" + actual_article_name + "]]" + recorteFinal
 			else:
-				print("Substituir por Legends: '" + actual_article_name + "' ([y]es/[n]o/[e]dit (Cânon)/[c]orrect (Legends)/[a]ll)")
-				if (all_next==False):
-					averiguar = input().lower()
-				else:
+				print("Substituir por Legends: '" + actual_article_name + "' ([y]es/[n]o/[e]dit (Legends)/[c]orrect (Cânon)/[a]ll)")
+				if all_next:
 					averiguar = "y"
+				else:
+					averiguar = input().lower()
 				if (averiguar == "y" or averiguar == "a"):
 					if (link_name):
 						novoTexto += "[[Legends:" + actual_article_name + "|" + link_name + "]]" + recorteFinal
@@ -88,30 +94,27 @@ def main():
 					if (link_name):
 						print('Tem "máscara"!')
 					novoLink = input("Novo link Legends: ")
-					while (tentarDecodeUTF8(novoLink)==False):
-						print("Erro! Caracteres inválidos! Tente de novo...")
-						novoLink = input("Novo link Legends: ")
 					if (link_name):
 						novoTexto += "[[Legends:" + novoLink + "|" + link_name + "]]" + recorteFinal
 					else:
 						novoTexto += "[[Legends:" + novoLink + "|" + novoLink + "]]" + recorteFinal
-					already_confirmed.append(novoLink)
+					if novoLink not in already_confirmed:
+						already_confirmed.append(novoLink)
 				elif (averiguar == "c"):
 					if (link_name):
 						print('Tem "máscara"!')
 					novoLink = input("Novo link normal: ")
-					while (tentarDecodeUTF8(novoLink)==False):
-						print("Erro! Caracteres inválidos! Tente de novo...")
-						novoLink = input("Novo link normal: ")
 					if (link_name):
 						novoTexto += "[[" + novoLink + "|" + link_name + "]]" + recorteFinal
 					else:
 						novoTexto += "[[" + novoLink + "]]" + recorteFinal
-					already_denied.append(novoLink)
+					if novoLink not in already_denied:
+						already_denied.append(novoLink)
 				else:
 					novoTexto += "[[" + link + "]]" + recorteFinal
 					already_denied.append(actual_article_name)
-		
+			yield already_confirmed, already_denied
+
 		novoTexto = novoTexto.replace("{{Links errados}}", '')
 		novoTexto = novoTexto.replace("{{links errados}}", '')
 		page.text = novoTexto
