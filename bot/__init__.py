@@ -12,3 +12,4 @@ pywikibot.Family._families["starwarsfandom"] = StarWarsWikiFamily()
 pywikibot.Family._families["centralcomunidade"] = CentralComunidadeFamily()
 
 site = pywikibot.Site(fam="starwarsfandom", code='pt', user='BB-08')
+pywikibot.config.password_file = 'user-password.py'

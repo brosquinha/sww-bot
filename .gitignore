@@ -134,6 +134,7 @@ user_id.txt
 pywikibot.lwp
 throttle.ctrl
 apicache-py3/
+user-password.py
 
 # Temp files
 last_content_of_canon_media_timeline.txt
