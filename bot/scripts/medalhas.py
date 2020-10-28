@@ -45,20 +45,7 @@ def main():
 		diferencaTime = editTimeDT - start_date_for_medals
 		
 		if (should_count_100K):
-			page_history = page.revisions()
-			revidAnt = 0
-			for rev in page_history:
-				if (rev.revid == revisionID):
-					revidAnt = revisionID
-				elif (revidAnt != 0):
-					revidAnt = rev.revid
-					break
-			if (revidAnt == revisionID):
-				diffLen = (len(page.getOldVersion(revisionID).encode('utf-8')))
-			else:
-				diffLen = (len(page.getOldVersion(revisionID).encode('utf-8')) - len(page.getOldVersion(revidAnt).encode('utf-8')))
-			if (diffLen > 0 and max(editTimeDT, start_date_for_medals) == editTimeDT):
-				contributions_sum = contributions_sum + diffLen
+			contributions_sum += check_100k_medal(page, revisionID, editTimeDT, start_date_for_medals)
 		output_str_len = print_over_line(
 			message="Progresso: {0:.3f}%".format((progress_counter/(user.editCount()*1.0))*100),
 			last_output_len=output_str_len
@@ -72,8 +59,11 @@ def main():
 		if (page.oldest_revision.revid == revisionID):
 			canon_pages_created += 1
 		
-	article_list = ["Luke Skywalker", "Leia Organa", "Rey Skywalker", "Finn", "Ben Solo", "Anakin Skywalker",
-		"Ahsoka Tano", "Obi-Wan Kenobi", "Yoda", "Estrela da Morte"]
+	article_list = [
+		"Luke Skywalker", "Leia Organa", "Rey Skywalker", "Finn", "Ben Solo",
+		"Anakin Skywalker", "Ahsoka Tano", "Obi-Wan Kenobi", "Yoda", "Estrela da Morte",
+		"Bo-Katan Kryze", "Olho da Morte", "Dave Filoni"
+	]
 	for article in article_list:
 		page = pywikibot.Page(site, article)
 		page_history = page.revisions()
@@ -84,8 +74,7 @@ def main():
 			if (rev.user == username and contrib_bytes == 0):
 				contrib_bytes = len(page.getOldVersion(rev.revid).encode('utf-8'))
 			elif (rev.user != username and contrib_bytes != 0):
-				article_contrib_sum = (article_contrib_sum +
-					(contrib_bytes - len(page.getOldVersion(rev.revid).encode('utf-8'))))
+				article_contrib_sum += contrib_bytes - len(page.getOldVersion(rev.revid).encode('utf-8'))
 				contrib_bytes = 0
 		article_contrib_sum += contrib_bytes
 		print("Soma de contribuições em {}: {}".format(article, article_contrib_sum))
@@ -96,3 +85,20 @@ def main():
 		print("Medalha de Honra 100k")
 	print(canon_pages_created , "páginas canônicas criadas")
 	print(canon_pages_edited , "edições em artigos canônicos")
+
+def check_100k_medal(page, revisionID, editTimeDT, start_date_for_medals):
+	page_history = page.revisions()
+	revidAnt = 0
+	for rev in page_history:
+		if (rev.revid == revisionID):
+			revidAnt = revisionID
+		elif (revidAnt != 0):
+			revidAnt = rev.revid
+			break
+	if (revidAnt == revisionID):
+		diffLen = (len(page.getOldVersion(revisionID).encode('utf-8')))
+	else:
+		diffLen = (len(page.getOldVersion(revisionID).encode('utf-8')) - len(page.getOldVersion(revidAnt).encode('utf-8')))
+	if (diffLen > 0 and max(editTimeDT, start_date_for_medals) == editTimeDT):
+		return diffLen
+	return 0
