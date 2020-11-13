@@ -39,6 +39,7 @@ fixes['obras'] = {
         (r'\bStar Wars: Uprising\b', u'Star Wars: A Rebelião'),
         (r'\bBattlefront: Twilight Company\b', u'Battlefront: Companhia do Crepúsculo'),
         (r'\bResistance Reborn\b', u'A Resistência Renasce'),
+        (r'\bChapter (\d+): ', r'Capítulo \1: '),
         #(r'\b\b', u''),
 		
 		### FILMES ###

@@ -20,7 +20,7 @@ def main():
         raise Exception('Obras dictionary not found')
 
     fixes_json = json.dumps(fixes['obras'], ensure_ascii=False, indent=4)
-    new_text = "<pre>{}</pre>".format(fixes_json)
+    new_text = "<pre>{}</pre>".format(fixes_json.replace('\\\\1', '$1'))
 
     showDiff(page.text, new_text)
     if get_user_yes_or_no("Salvar?"):
