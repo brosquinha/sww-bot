@@ -5,4 +5,4 @@ idna==2.8
 pycparser==2.19
 pywikibot==3.0.20200111
 requests==2.22.0
-urllib3==1.25.3
+urllib3==1.25.8
