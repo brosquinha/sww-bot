@@ -40,6 +40,7 @@ fixes['obras'] = {
         (r'\bBattlefront: Twilight Company\b', u'Battlefront: Companhia do Crepúsculo'),
         (r'\bResistance Reborn\b', u'A Resistência Renasce'),
         (r'\bChapter (\d+): ', r'Capítulo \1: '),
+        (r'\bStar Wars: Galactic Atlas\b', u'Star Wars: Atlas Galáctico'),
         #(r'\b\b', u''),
 		
 		### FILMES ###
@@ -77,6 +78,25 @@ fixes['obras'] = {
         (r'\bThe Paradise Snare\b', u'A Armadilha do Paraíso'),
         (r'\bDarth Vader and the Cry of Shadows\b', u'Darth Vader: O Clamor das Sombras'),
         #(r'\b\b', u''),
+    ]
+}
+
+fixes['helpPages'] = {
+    'regex': True,
+    'msg': {
+        '_default':u'([[User:Thales César|Thales]]) Fixing local help pages links 😓',
+    },
+    'replacements': [
+        (r'\[\[Ajuda:(A|a)vançado\b', '[[Star Wars Wiki:Ajuda avançada'),
+        (r'\[\[Ajuda:Conteúdo\b', '[[Star Wars Wiki:Ajuda'),
+        (r'\[\[Ajuda:Conteúdos\b', '[[Star Wars Wiki:Ajuda'),
+        (r'\[\[Ajuda:Editando\b', '[[Ajuda:Como editar'),
+        (r'\[\[Ajuda:Editar\b', '[[Ajuda:Como editar'),
+        (r'\[\[Ajuda:Editor Visual\b', '[[Star Wars Wiki:Editor Visual'),
+        (r'\[\[Ajuda:Infobox\b', '[[Star Wars Wiki:Predefinições/Infobox'),
+        (r'\[\[Ajuda:Infoboxes\b', '[[Star Wars Wiki:Predefinições/Infobox'),
+        (r'\[\[Ajuda:Predefinições\b', '[[Star Wars Wiki:Predefinições'),
+        (r'\[\[Ajuda:Tutorial\b', '[[Star Wars Wiki:Tutorial')
     ]
 }
 
