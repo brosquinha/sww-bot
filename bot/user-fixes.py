@@ -41,7 +41,13 @@ fixes['obras'] = {
         (r'\bResistance Reborn\b', u'A Resistência Renasce'),
         (r'\bChapter (\d+): ', r'Capítulo \1: '),
         (r'\bStar Wars: Galactic Atlas\b', u'Star Wars: Atlas Galáctico'),
-        #(r'\b\b', u''),
+        (r'\bSta Wars: The Rebel Files\b', u'Star Wars: O Arquivo Rebelde'),
+        (r'\bThe High Republic: Light of the Jedi', u'The High Republic: Luz dos Jedi'),
+        (r'\bStar Wars Biomes\b', u'Star Wars Biomas'),
+        (r'\bStar Wars Vehicle Flythroughs\b', u'Por Dentro dos Veículos de Star Wars'),
+        (r'\bStar Wars: The Mandalorian Junior Novel\b', u'Star Wars: The Mandalorian (romance juvenil)'),
+        (r'\bEmpire of Dreams: The Story of the Star Wars Trilogy\b', u'Império dos Sonhos: A História da Trilogia Star Wars'),
+        # (r'\b\b', u''),
 		
 		### FILMES ###
         (r'\[\[Star Wars: Episode I The Phantom Menace\|\'\'Star Wars\'\': Episode I \'\'The Phantom Menace\'\'\]\]', u'{{Filme|I}}'),
