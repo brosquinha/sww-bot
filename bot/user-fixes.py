@@ -79,6 +79,7 @@ fixes['obras'] = {
         (r'Empire Day \(episódio\)', u'Empire Day'),
         (r'Idiot\'s Array \(episódio\)', u'Idiot\'s Array'),
         (r'Legacy \(episódio\)', u'Legacy'),
+        (r'The General \(episódio\)', u'The General'),
         #(r'\b\b', u''),
 		
 		### LEGENDS ###
